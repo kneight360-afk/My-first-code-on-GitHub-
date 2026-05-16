@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#MyFirstCode - kneight360-afk</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--c:#00e5ff;--cg:rgba(0,229,255,.5);--dark:#050810;--w:#e8f4f8;--gr:#4a6b7a;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--dark);color:var(--w);font-family:"JetBrains Mono",monospace;min-height:100vh;display:flex;align-items:center;justify-content:center;}
+.bg{position:fixed;inset:0;background:radial-gradient(ellipse 70% 70% at 15% 15%,rgba(0,229,255,.06),transparent 55%),radial-gradient(ellipse 60% 60% at 85% 85%,rgba(0,80,255,.06),transparent 55%),var(--dark);}
+.grid{position:fixed;inset:0;background-image:linear-gradient(rgba(0,229,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.025) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.wrap{position:relative;z-index:10;width:100%;max-width:420px;padding:24px 20px;}
+.head{text-align:center;margin-bottom:24px;animation:fdown .8s ease both;}
+.btag{display:inline-block;background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.3);color:var(--c);font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:5px 16px;margin-bottom:14px;}
+h1{font-family:"Orbitron",sans-serif;font-size:clamp(26px,8vw,34px);font-weight:900;line-height:1.1;}
+h1 span{color:var(--c);text-shadow:0 0 20px var(--cg);}
+.card{background:rgba(13,17,23,.88);border:1px solid rgba(0,229,255,.18);padding:24px;position:relative;backdrop-filter:blur(20px);animation:fup .8s .2s ease both;}
+.card::before{content:"";position:absolute;top:-1px;left:-1px;width:32px;height:32px;border-top:2px solid var(--c);border-left:2px solid var(--c);}
+.card::after{content:"";position:absolute;bottom:-1px;right:-1px;width:32px;height:32px;border-bottom:2px solid var(--c);border-right:2px solid var(--c);}
+.gbadge{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding:10px 14px;background:rgba(0,229,255,.04);border:1px solid rgba(0,229,255,.1);}
+.ghico{width:22px;height:22px;fill:var(--c);flex-shrink:0;}
+.gname{font-size:14px;color:var(--c);font-weight:700;}
+.glbl{font-size:9px;color:var(--gr);letter-spacing:2px;text-transform:uppercase;display:block;}
+.pill{display:flex;align-items:center;gap:5px;font-size:9px;color:#00ff88;margin-left:auto;}
+.dotg{width:6px;height:6px;background:#00ff88;border-radius:50%;box-shadow:0 0 6px #00ff88;animation:pulse 2s infinite;}
+.term{background:#010409;border:1px solid rgba(0,229,255,.1);margin-bottom:20px;}
+.tbar{display:flex;align-items:center;gap:6px;padding:8px 12px;background:rgba(0,229,255,.04);border-bottom:1px solid rgba(0,229,255,.08);}
+.d{width:8px;height:8px;border-radius:50%;}
+.dr{background:#ff5f56;}.dy{background:#ffbd2e;}.dg{background:#27c93f;}
+.tfn{margin-left:auto;font-size:10px;color:var(--gr);}
+.tbody{padding:14px 16px;}
+.cl{display:flex;gap:14px;font-size:12px;line-height:1.8;}
+.ln{color:#2a4050;flex-shrink:0;}
+.cm{color:#3d5a6a;font-style:italic;}
+.tg{color:#e06c75;}.at{color:#98c379;}.vl{color:#e5c07b;}.tx{color:var(--w);}
+.cur{display:inline-block;width:2px;height:13px;background:var(--c);animation:blink 1s step-end infinite;vertical-align:middle;}
+@keyframes blink{0%,50%{opacity:1;}51%,100%{opacity:0;}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;}
+.stat{text-align:center;padding:12px 6px;border:1px solid rgba(0,229,255,.1);background:rgba(0,229,255,.03);}
+.sv{display:block;font-family:"Orbitron",sans-serif;font-size:16px;font-weight:700;color:var(--c);text-shadow:0 0 12px var(--cg);}
+.sl{display:block;font-size:8px;color:var(--gr);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px;}
+.prog{margin-bottom:20px;}
+.ph{display:flex;justify-content:space-between;font-size:9px;color:var(--gr);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+.ph span:last-child{color:var(--c);}
+.pt{height:2px;background:rgba(0,229,255,.1);}
+.pf{height:100%;background:linear-gradient(90deg,#0055ff,var(--c));box-shadow:0 0 10px var(--cg);width:0%;animation:load 2s 1s ease forwards;}
+@keyframes load{to{width:15%;}}
+.foot{display:flex;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(0,229,255,.07);}
+.ht{font-size:10px;color:var(--c);letter-spacing:2px;text-transform:uppercase;}
+.ts{font-size:9px;color:var(--gr);}
+@keyframes fdown{from{opacity:0;transform:translateY(-16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fup{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.6);opacity:.5;}}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="grid"></div>
+<div class="wrap">
+<div class="head">
+<div class="btag">// GitHub Challenge</div>
+<h1>#My<span>First</span><br>Code</h1>
+</div>
+<div class="card">
+<div class="gbadge">
+<svg class="ghico" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.23c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.7.82.58C20.56 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
+<div><span class="glbl">Developer</span><span class="gname">kneight360-afk</span></div>
+<div class="pill"><div class="dotg"></div>Active</div>
+</div>
+<div class="term">
+<div class="tbar"><div class="d dr"></div><div class="d dy"></div><div class="d dg"></div><div class="tfn">index.html</div></div>
+<div class="tbody">
+<div class="cl"><span class="ln">1</span><span class="cm">&lt;!-- My First Line of Code --&gt;</span></div>
+<div class="cl"><span class="ln">2</span><span><span class="tg">&lt;h1</span> <span class="at">class</span><span class="tx">=</span><span class="vl">"first"</span><span class="tg">&gt;</span></span></div>
+<div class="cl"><span class="ln">3</span><span class="tx" id="tw">&nbsp;&nbsp;</span><span class="cur"></span></div>
+<div class="cl"><span class="ln">4</span><span class="tg">&lt;/h1&gt;</span></div>
+</div>
+</div>
+<div class="stats">
+<div class="stat"><span class="sv">01</span><span class="sl">Lines</span></div>
+<div class="stat"><span class="sv">HTML</span><span class="sl">Language</span></div>
+<div class="stat"><span class="sv">&#8734;</span><span class="sl">Potential</span></div>
+</div>
+<div class="prog">
+<div class="ph"><span>GitHub Certificate</span><span>15%</span></div>
+<div class="pt"><div class="pf"></div></div>
+</div>
+<div class="foot">
+<div class="ht">#MyFirstCode</div>
+<div class="ts" id="ts"></div>
+</div>
+</div>
+</div>
+<script>
+var m="Hello, World!";
+var el=document.getElementById("tw");
+var i=0;
+function type(){if(i<m.length){el.innerHTML="  "+m.slice(0,i+1);i++;setTimeout(type,85);}}
+setTimeout(type,1600);
+var d=new Date();
+document.getElementById("ts").textContent=d.toLocaleDateString("en-US",{year:"numeric",month:"short",day:"numeric"});
+</script>
+</body>
+</html>
